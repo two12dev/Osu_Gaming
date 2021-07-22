@@ -35,31 +35,41 @@ public class Controller implements Initializable {
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-        songs = new ArrayList<File>();
-        directory = new File("module/src/Music");
-        files = directory.listFiles();
-
-        if (files != null) {
-            for (File file : files) {
-                songs.add(file);
-                System.out.println(file);
-            }
-        }
-
-        media = new Media(songs.get(songNumber).toURI().toString());
+        media = new Media(Controller.class.getResource("/1Paris.wav").toString());
+        System.out.println(media);
         mediaPlayer = new MediaPlayer(media);
+        mediaPlayer.setCycleCount(mediaPlayer.INDEFINITE);
+        mediaPlayer.setAutoPlay(true);
+        mediaPlayer.play();
+        // my add
+//        mediaPlayer.setCycleCount(mediaPlayer.INDEFINITE);
+//        mediaPlayer.setAutoPlay(true);
+//        mediaPlayer.play();
+//        songs = new ArrayList<File>();
+//        directory = new File("module/src/Music");
+//        files = directory.listFiles();
+//
+//        if (files != null) {
+//            for (File file : files) {
+//                songs.add(file);
+//                System.out.println(file);
+//            }
+//        }
+//
+//        media = new Media(songs.get(songNumber).toURI().toString());
+    //    mediaPlayer = new MediaPlayer(media);
         volumeSlider.valueProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
                 mediaPlayer.setVolume(volumeSlider.getValue() *0.01);
 
             }
+
         });
 
     }
 
     public void playMedia(){
-        SOTF sotf = new SOTF();
         mediaPlayer.play();
         System.out.println("Playing music");
 
@@ -69,19 +79,19 @@ public class Controller implements Initializable {
 
     }
     public void nextMedia(){
-        if (songNumber < songs.size() - 1){
-            songNumber++;
-            mediaPlayer.stop();
-            media = new Media(songs.get(songNumber).toURI().toString());
-            mediaPlayer = new MediaPlayer(media);
-            playMedia();
-        } else {
-            songNumber = 0;
-            mediaPlayer.stop();
-            media = new Media(songs.get(songNumber).toURI().toString());
-            mediaPlayer = new MediaPlayer(media);
-            playMedia();
-        }
+//        if (songNumber < songs.size() - 1){
+//            songNumber++;
+//            mediaPlayer.stop();
+//            media = new Media(songs.get(songNumber).toURI().toString());
+//            mediaPlayer = new MediaPlayer(media);
+//            playMedia();
+//        } else {
+//            songNumber = 0;
+//            mediaPlayer.stop();
+//            media = new Media(songs.get(songNumber).toURI().toString());
+//            mediaPlayer = new MediaPlayer(media);
+//            playMedia();
+//        }
 
     }
 
