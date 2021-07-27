@@ -1,6 +1,7 @@
 package com.GUI.loadgame;
 
 import com.GUI.SceneController;
+import com.GUI.maingame.MainScreenController;
 import com.game.Item;
 import com.game.Player;
 import com.map.Map;
@@ -11,10 +12,7 @@ import javafx.fxml.FXML;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 
 public class LoadGameSceneController {
@@ -37,6 +35,11 @@ public class LoadGameSceneController {
     public void loadGameBtnActionEvent(ActionEvent event) throws IOException {
 
         ArrayList<Object> attributes = new ArrayList<>();
+
+        File saveFileCheck = new File("savedGame.txt");
+        if (saveFileCheck.createNewFile()) {
+            loadGameBtnNoSaveFileEvent(event);
+        }
 
         try{
             BufferedReader saveFile = new BufferedReader(new FileReader("savedGame.txt"));
@@ -93,6 +96,9 @@ public class LoadGameSceneController {
 
         //Put player in room they left off from
         jemad.setCurrentLocation(startingLocation);
+        jemad.resetInventory();
+        jemad.setEquippedWeapon(null);
+        MainScreenController.clearItemsAndEnemies();
 
         //Go Back to main Screen
         SceneController.switchScenesBaseOnBtnClick(event);
@@ -104,6 +110,49 @@ public class LoadGameSceneController {
         // scene controller
         SceneController.switchScenesBaseOnBtnClick(event);
     }
+
+    @FXML
+    public void loadGameBtnNoSaveFileEvent(ActionEvent event) throws IOException {
+        int hp = 100;
+        String currentLocation = "Outside Bar";
+        int minDamage = 7;
+        int maxDamage = 12;
+        jemad.resetInventory();
+
+
+        //Will create new savedGame file if it does not exists.
+        //Else it will overwrite previous save and then write to file
+        try {
+            File saveFile = new File("savedGame.txt");
+            if (saveFile.createNewFile()) {
+                System.out.println("File created: " + saveFile.getName());
+            } else {
+                File oldSave = new File("savedGame.txt");
+                oldSave.delete();
+                saveFile = new File("savedGame.txt");
+                saveFile.createNewFile();
+                System.out.println("File created: " + saveFile.getName());
+            }
+            BufferedWriter savedGame = new BufferedWriter(new FileWriter("savedGame.txt"));
+            savedGame.write("" + hp);
+            savedGame.newLine();
+            savedGame.write(currentLocation);
+            savedGame.newLine();
+            savedGame.write("" + minDamage);
+            savedGame.newLine();;
+            savedGame.write("" + maxDamage);
+            savedGame.newLine();
+
+
+            savedGame.close();
+
+        }
+        catch (Exception e){
+            System.out.println("Can't save file");
+        }
+    }
+
+
 
 
 }

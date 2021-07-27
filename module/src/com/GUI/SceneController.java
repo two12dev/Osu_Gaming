@@ -76,7 +76,6 @@ public class SceneController {
                 mainGameScene.buildMainGameScene(stage);
                 break;
             case "startBtn":
-            case "restartButton":
             case "tutorialToMainBtn":
                 System.out.println("startBtn Clicked");
                 JemadIntroScene jemadIntroScene = new JemadIntroScene();
@@ -97,6 +96,7 @@ public class SceneController {
                 stage.close();
                 break;
             case "loadBtn":
+            case "loadGameTitleBtn":
                 LoadGameScene loadGameScene = new LoadGameScene();
                 loadGameScene.buildLoadGameWaitScene(stage);
                 break;
@@ -104,6 +104,9 @@ public class SceneController {
                 TutorialSceneBuilder tutorialScene = new TutorialSceneBuilder();
                 tutorialScene.buildWinScene(stage);
                 break;
+            case "restartButton":
+                loadGameScene = new LoadGameScene();
+                loadGameScene.buildLoadGameRestartScene(stage);
         }
     }
 }

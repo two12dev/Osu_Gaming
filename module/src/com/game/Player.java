@@ -25,6 +25,11 @@ public class Player{
     // just an empty constructor
     public Player() {}
 
+    //Clear Inventory
+    public void resetInventory(){
+        inventory.clear();
+    }
+
     public int getFullHp() {
         return 100;
     }

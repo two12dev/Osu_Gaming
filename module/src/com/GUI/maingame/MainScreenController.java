@@ -170,6 +170,15 @@ public class MainScreenController {
         currentLocationLabel.setText(jemad.getCurrentLocation());
     }
 
+    //Clear obtained items and enemies
+    public static void clearItemsAndEnemies(){
+        OBTAINED_ITEMS.clear();
+        DEFEATED_ENEMYLIST.clear();
+        for(String room: IS_NOT_VISITED.keySet() ){
+            IS_NOT_VISITED.replace(room, true);
+        }
+    }
+
     public static boolean getPlayerVisitedPlaces(String location) {
         System.out.println("Static method getPlayervisitedPlaces " + IS_NOT_VISITED.get(location));
         return IS_NOT_VISITED.get(location);
