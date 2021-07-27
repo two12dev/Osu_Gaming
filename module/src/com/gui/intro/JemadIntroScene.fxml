@@ -9,17 +9,17 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gui.intro.JemadIntroController">
+<AnchorPane prefHeight="650.0" prefWidth="1200.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gui.intro.JemadIntroController">
    <children>
-      <TextArea fx:id="jemadIntroDialog" editable="false" layoutX="206.0" layoutY="213.0" prefHeight="448.0" prefWidth="788.0" wrapText="true">
+      <TextArea fx:id="jemadIntroDialog" editable="false" layoutX="202.0" layoutY="188.0" prefHeight="319.0" prefWidth="763.0" wrapText="true">
          <font>
             <Font size="30.0" />
          </font></TextArea>
-      <Button fx:id="continueBtn" layoutX="484.0" layoutY="693.0" mnemonicParsing="false" onAction="#switchItIntoMainGame" prefHeight="49.0" prefWidth="235.0" style="-fx-background-color: Orange;" text="Continue..">
+      <Button fx:id="continueBtn" layoutX="484.0" layoutY="526.0" mnemonicParsing="false" onAction="#switchItIntoMainGame" prefHeight="49.0" prefWidth="235.0" style="-fx-background-color: Orange;" text="Continue..">
          <font>
             <Font size="26.0" />
          </font></Button>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="349.0" layoutY="35.0" prefHeight="112.0" prefWidth="502.0" text="Spirit Of The Fist">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="349.0" layoutY="7.0" prefHeight="112.0" prefWidth="502.0" text="Spirit Of The Fist">
          <font>
             <Font size="60.0" />
          </font>
@@ -40,7 +40,7 @@
             </RadialGradient>
          </textFill>
       </Label>
-      <Label alignment="CENTER" layoutX="397.0" layoutY="110.0" prefHeight="93.0" prefWidth="409.0" text="Madness Of Jemad">
+      <Label alignment="CENTER" layoutX="397.0" layoutY="82.0" prefHeight="93.0" prefWidth="409.0" text="Madness Of Jemad">
          <font>
             <Font size="47.0" />
          </font>
