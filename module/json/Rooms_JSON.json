@@ -74,8 +74,8 @@
   "Pool Deck: Upper Level":{
     "NPC":["bartender"],
     "items": ["empty bottle"],
-    "enemies": [""],
-    "bosses": ["big ben"],
+    "enemies": ["big ben"],
+    "bosses": [],
     "name": ["Pool Deck: Upper Level"],
     "south": ["Slot Machines"],
     "west": ["Pool Bar"],
@@ -116,8 +116,8 @@
   "VIP Room":{
     "NPC":[""],
     "items": ["cash"],
-    "enemies": [""],
-    "bosses": ["pit boss"],
+    "enemies": ["pit boss"],
+    "bosses": [],
     "name": ["VIP Room"],
     "east": ["Elevator"],
     "north": ["Poker Tables"],
@@ -126,7 +126,7 @@
   },
   "Elevator":{
     "NPC":["attendant"],
-    "items": [""],
+    "items": [],
     "enemies": ["elevator man"],
     "bosses": [""],
     "name": ["Elevator"],
@@ -156,7 +156,7 @@
   },
   "Rooftop: Final Boss":{
     "NPC":[""],
-    "items": [""],
+    "items": [],
     "enemies": ["Don Fury"],
     "bosses": [""],
     "name": ["Rooftop: Final Boss"],

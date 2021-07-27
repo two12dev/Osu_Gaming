@@ -4,7 +4,7 @@
       {
         "name": "snack",
         "type": "Consumable",
-        "effect": 5
+        "effect": 10
       },
       {
         "name": "wood stick",
@@ -41,7 +41,7 @@
       {
         "name": "used bandage",
         "type": "Consumable",
-        "effect": 2
+        "effect": 17
       }]
   },
   "Locker Room":{
@@ -57,7 +57,7 @@
       {
         "name": "cold tea",
         "type": "Consumable",
-        "effect": 3
+        "effect": 8
       }]
   },
   "Pool Bar":{
@@ -65,18 +65,18 @@
       {
         "name": "smart water",
         "type": "Consumable",
-        "effect": 5
+        "effect": 10
       }]
   },
   "Pool Deck: Upper Level":{
-
+    "item": []
   },
   "Slot Machines":{
     "item": [
       {
         "name": "soda",
         "type": "Consumable",
-        "effect": 10
+        "effect": 15
       }]
   },
   "Poker Tables":{
@@ -117,7 +117,7 @@
       {
         "name": "spirit of fist",
         "type": "Weapon",
-        "effect": 17
+        "effect": 19
       }]
   },
   "Balcony":{
@@ -125,7 +125,7 @@
       {
         "name": "cold water",
         "type": "Consumable",
-        "effect": 10
+        "effect": 25
       }]
   },
   "Rooftop: Final Boss":{
