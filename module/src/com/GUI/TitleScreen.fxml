@@ -82,7 +82,7 @@
             <Font size="36.0" />
          </font>
       </Button>
-      <Button layoutX="496.0" layoutY="638.0" mnemonicParsing="false" prefHeight="68.0" prefWidth="238.0" text="Load Game">
+      <Button fx:id="loadGameTitleBtn" layoutX="496.0" layoutY="638.0" mnemonicParsing="false" onAction="#switchToMainScreen" prefHeight="68.0" prefWidth="238.0" text="Load Game">
          <font>
             <Font size="36.0" />
          </font>

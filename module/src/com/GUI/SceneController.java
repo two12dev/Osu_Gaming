@@ -97,6 +97,7 @@ public class SceneController {
                 stage.close();
                 break;
             case "loadBtn":
+            case "loadGameTitleBtn":
                 LoadGameScene loadGameScene = new LoadGameScene();
                 loadGameScene.buildLoadGameWaitScene(stage);
                 break;
