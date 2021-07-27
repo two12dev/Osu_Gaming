@@ -85,8 +85,8 @@
     "Max Attack": 5
   },
   "Don Fury": {
-    "Max Health": 120,
+    "Max Health": 100,
     "Min Attack": 20,
-    "Max Attack": 30
+    "Max Attack": 26
   }
 }
