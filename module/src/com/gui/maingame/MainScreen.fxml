@@ -19,9 +19,9 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="pane" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: Black;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gui.maingame.MainScreenController">
+<AnchorPane fx:id="pane" prefHeight="650.0" prefWidth="1200.0" style="-fx-background-color: Black;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gui.maingame.MainScreenController">
    <children>
-      <Pane layoutY="409.0" prefHeight="403.0" prefWidth="1200.0" style="-fx-background-color: Black;">
+      <Pane layoutY="409.0" prefHeight="355.0" prefWidth="1200.0" style="-fx-background-color: Black;">
          <children>
             <MenuButton fx:id="menuButton" alignment="CENTER" contentDisplay="RIGHT" layoutX="484.0" layoutY="22.0" mnemonicParsing="false" popupSide="RIGHT" prefHeight="26.0" prefWidth="131.0" text="Menu">
               <items>
@@ -35,10 +35,10 @@
             <Button fx:id="north" layoutX="595.0" layoutY="119.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="89.0" style="-fx-background-color: Orange;" text="North" />
             <Button fx:id="south" layoutX="595.0" layoutY="212.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="89.0" style="-fx-background-color: Orange;" text="South" />
             <Button fx:id="east" layoutX="691.0" layoutY="212.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="89.0" style="-fx-background-color: Orange;" text="East" />
-            <MenuButton fx:id="getItemMenuButton" layoutX="1001.0" layoutY="304.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="174.0" text="Get Items" />
-            <ListView fx:id="inventoryListView" layoutX="805.0" layoutY="65.0" prefHeight="188.0" prefWidth="370.0" />
-            <Button fx:id="userItemButton" layoutX="805.0" layoutY="266.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="370.0" style="-fx-background-color: Orange;" text="Use Selected Item" />
-            <Label layoutX="805.0" layoutY="17.0" prefHeight="45.0" prefWidth="131.0" text="Inventory">
+            <MenuButton fx:id="getItemMenuButton" layoutX="995.0" layoutY="297.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="174.0" text="Get Items" />
+            <ListView fx:id="inventoryListView" layoutX="799.0" layoutY="58.0" prefHeight="188.0" prefWidth="370.0" />
+            <Button fx:id="userItemButton" layoutX="799.0" layoutY="259.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="370.0" style="-fx-background-color: Orange;" text="Use Selected Item" />
+            <Label layoutX="812.0" layoutY="13.0" prefHeight="45.0" prefWidth="131.0" text="Inventory">
                <font>
                   <Font size="30.0" />
                </font>
@@ -64,8 +64,8 @@
                   </RadialGradient>
                </textFill>
             </Label>
-            <Label fx:id="itemUserActionInfo" layoutX="940.0" layoutY="22.0" prefHeight="26.0" prefWidth="222.0" textFill="WHITE" />
-            <Label layoutX="498.0" layoutY="328.0" prefHeight="26.0" prefWidth="109.0" text="Current Location:">
+            <Label fx:id="itemUserActionInfo" layoutX="947.0" layoutY="18.0" prefHeight="26.0" prefWidth="222.0" textFill="WHITE" />
+            <Label layoutX="498.0" layoutY="304.0" prefHeight="26.0" prefWidth="109.0" text="Current Location:">
                <font>
                   <Font size="14.0" />
                </font>
@@ -91,7 +91,7 @@
                   </RadialGradient>
                </textFill>
             </Label>
-            <Label fx:id="currentLocationLabel" layoutX="623.0" layoutY="328.0" prefHeight="26.0" prefWidth="123.0" text="label">
+            <Label fx:id="currentLocationLabel" layoutX="623.0" layoutY="304.0" prefHeight="26.0" prefWidth="123.0" text="label">
                <font>
                   <Font size="14.0" />
                </font>
@@ -117,12 +117,12 @@
                   </RadialGradient>
                </textFill>
             </Label>
-            <TextArea fx:id="gameDescription" editable="false" layoutX="14.0" layoutY="18.0" prefHeight="365.0" prefWidth="460.0" style="-fx-background-color: DIMGREY;" wrapText="true">
+            <TextArea fx:id="gameDescription" editable="false" layoutX="14.0" layoutY="18.0" prefHeight="306.0" prefWidth="460.0" style="-fx-background-color: DIMGREY;" wrapText="true">
                <font>
                   <Font size="20.0" />
                </font>
             </TextArea>
-            <MenuButton fx:id="fightButton" layoutX="805.0" layoutY="304.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="174.0" text="Fight" />
+            <MenuButton fx:id="fightButton" layoutX="799.0" layoutY="297.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="174.0" text="Fight" />
             <Label fx:id="incombatMessage" alignment="CENTER" layoutX="568.0" layoutY="65.0" prefHeight="32.0" prefWidth="144.0" text="Not in combat">
                <font>
                   <Font size="18.0" />
