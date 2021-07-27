@@ -1,6 +1,7 @@
 package com.GUI.loadgame;
 
 import com.GUI.SceneController;
+import com.GUI.maingame.MainScreenController;
 import com.game.Item;
 import com.game.Player;
 import com.map.Map;
@@ -95,6 +96,9 @@ public class LoadGameSceneController {
 
         //Put player in room they left off from
         jemad.setCurrentLocation(startingLocation);
+        jemad.resetInventory();
+        jemad.setEquippedWeapon(null);
+        MainScreenController.clearItemsAndEnemies();
 
         //Go Back to main Screen
         SceneController.switchScenesBaseOnBtnClick(event);
@@ -113,6 +117,8 @@ public class LoadGameSceneController {
         String currentLocation = "Outside Bar";
         int minDamage = 7;
         int maxDamage = 12;
+        jemad.resetInventory();
+
 
         //Will create new savedGame file if it does not exists.
         //Else it will overwrite previous save and then write to file
