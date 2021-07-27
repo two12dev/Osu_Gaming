@@ -21,6 +21,10 @@ public class Controller implements Initializable {
     // test
     @FXML
     private Button tutorialBtn;
+    @FXML
+    private Button loadGameTitleBtn;
+    @FXML
+    private Button loseRestartBtn;
     // end of test
     private File directory;
     private File[] files;
