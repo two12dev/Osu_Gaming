@@ -1,6 +1,7 @@
-82
-Alley Behind Bar
-7
-12
-snack
+39
+Inside Bar
+19
+24
 wood stick
+snack
+energy drink
