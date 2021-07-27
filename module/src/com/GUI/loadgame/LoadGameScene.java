@@ -45,4 +45,15 @@ public class LoadGameScene {
             ioException.printStackTrace();
         }
     }
+
+    public void buildLoseResetLoadGameScene(Stage stage) {
+        try {
+            root = FXMLLoader.load(this.getClass().getResource("LoseResetLoadGameScreen.fxml"));
+            loadGameWaitScene = new Scene(root, 800, 600);
+            stage.setScene(loadGameWaitScene);
+            stage.show();
+        }  catch (IOException ioException) {
+            ioException.printStackTrace();
+        }
+    }
 }
