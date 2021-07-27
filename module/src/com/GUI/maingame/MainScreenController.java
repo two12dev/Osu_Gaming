@@ -691,8 +691,11 @@ public class MainScreenController {
     // current location
     private void generatePossibleItemsInCurrentRoom() {
         JSONArray itemList = ReadItemContentJson.getItemBasedOnLocation(jemad.getCurrentLocation());
-        getItemMenuButton.getItems().removeAll();
+        getItemMenuButton.getItems().clear();
         if (itemList == null || itemList.size() == 0) {
+            MenuItem noItemAtTheRoom = new MenuItem();
+            noItemAtTheRoom.setText("No items");
+            getItemMenuButton.getItems().add(noItemAtTheRoom);
             return;
         }
         if (itemList != null && itemList.size() > 0 && restrictGeneratePossibleItemInCurrentRoom()) {

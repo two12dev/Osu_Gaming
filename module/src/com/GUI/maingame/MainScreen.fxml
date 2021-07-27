@@ -151,7 +151,7 @@
             </Label>
          </children>
       </Pane>
-      <TextField alignment="CENTER" layoutX="14.0" layoutY="14.0" prefHeight="42.0" prefWidth="1174.0" style="-fx-background-color: white;" text="Basic menu area (such as music)">
+      <TextField alignment="CENTER" editable="false" layoutX="14.0" layoutY="14.0" prefHeight="42.0" prefWidth="1174.0" style="-fx-background-color: white;">
          <font>
             <Font size="22.0" />
          </font>
