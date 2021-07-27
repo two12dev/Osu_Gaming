@@ -18,7 +18,7 @@
       {
         "name": "energy drink",
         "type": "Consumable",
-        "effect": 7
+        "effect": 14
       },
       {
         "name": "protein shake",
@@ -32,7 +32,7 @@
       {
         "name": "pool cue",
         "type": "Weapon",
-        "effect": 5
+        "effect": 8
       }
     ]
   },
@@ -49,7 +49,7 @@
       {
         "name": "baseball bat",
         "type": "Weapon",
-        "effect": 10
+        "effect": 13
       }]
   },
   "Pool Deck":{
@@ -65,7 +65,7 @@
       {
         "name": "smart water",
         "type": "Consumable",
-        "effect": 10
+        "effect": 20
       }]
   },
   "Pool Deck: Upper Level":{
@@ -84,7 +84,7 @@
       {
         "name": "wooden knuckle",
         "type": "Weapon",
-        "effect": 12
+        "effect": 15
       }]
   },
   "Steak House":{
@@ -92,7 +92,7 @@
       {
         "name": "chef's knife",
         "type": "Weapon",
-        "effect": 13
+        "effect": 16
       }]
   },
   "VIP Room":{
@@ -100,7 +100,7 @@
       {
         "name": "organic vegetable drink",
         "type": "Consumable",
-        "effect": 7
+        "effect": 21
       }]
   },
   "Elevator":{
@@ -108,7 +108,7 @@
       {
         "name": "iron fist",
         "type": "Weapon",
-        "effect": 15
+        "effect": 17
       }]
   },
 
@@ -125,7 +125,7 @@
       {
         "name": "cold water",
         "type": "Consumable",
-        "effect": 25
+        "effect": 45
       }]
   },
   "Rooftop: Final Boss":{

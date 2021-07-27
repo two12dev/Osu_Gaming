@@ -10,44 +10,44 @@
 
 <AnchorPane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.GUI.status.PlayerStatusSceneController">
    <children>
-      <ImageView fx:id="imageView" fitHeight="517.0" fitWidth="344.0" layoutX="160.0" layoutY="130.0" pickOnBounds="true" preserveRatio="true" />
-      <Label layoutX="582.0" layoutY="134.0" prefHeight="44.0" prefWidth="154.0" text="Name: ">
+      <ImageView fx:id="imageView" fitHeight="590.0" fitWidth="344.0" layoutX="160.0" layoutY="91.0" pickOnBounds="true" preserveRatio="true" />
+      <Label layoutX="522.0" layoutY="96.0" prefHeight="44.0" prefWidth="154.0" text="Name: ">
          <font>
             <Font size="36.0" />
          </font></Label>
-      <Label layoutX="582.0" layoutY="197.0" prefHeight="44.0" prefWidth="105.0" text="Story: ">
+      <Label layoutX="522.0" layoutY="158.0" prefHeight="44.0" prefWidth="105.0" text="Story: ">
          <font>
             <Font size="36.0" />
          </font></Label>
-      <TextArea fx:id="storyTextArea" layoutX="851.0" layoutY="197.0" prefHeight="211.0" prefWidth="263.0">
+      <TextArea fx:id="storyTextArea" layoutX="851.0" layoutY="159.0" prefHeight="211.0" prefWidth="263.0">
          <font>
             <Font size="18.0" />
          </font></TextArea>
-      <Label layoutX="582.0" layoutY="431.0" prefHeight="44.0" prefWidth="196.0" text="Current HP:">
+      <Label layoutX="522.0" layoutY="393.0" prefHeight="44.0" prefWidth="196.0" text="Current HP:">
          <font>
             <Font size="36.0" />
          </font></Label>
-      <Label layoutX="582.0" layoutY="512.0" prefHeight="44.0" prefWidth="269.0" text="Attack Damage: ">
+      <Label layoutX="522.0" layoutY="474.0" prefHeight="44.0" prefWidth="269.0" text="Attack Damage: ">
          <font>
             <Font size="36.0" />
          </font></Label>
-      <Label layoutX="582.0" layoutY="596.0" prefHeight="44.0" prefWidth="293.0" text="Current Location:">
+      <Label layoutX="522.0" layoutY="558.0" prefHeight="44.0" prefWidth="277.0" text="Current Location:">
          <font>
             <Font size="36.0" />
          </font></Label>
-      <TextField fx:id="nameTextField" layoutX="851.0" layoutY="134.0" prefHeight="45.0" prefWidth="263.0">
+      <TextField fx:id="nameTextField" layoutX="851.0" layoutY="96.0" prefHeight="45.0" prefWidth="263.0">
          <font>
             <Font size="24.0" />
          </font></TextField>
-      <TextField fx:id="currentHp" layoutX="851.0" layoutY="431.0" prefHeight="45.0" prefWidth="263.0">
+      <TextField fx:id="currentHp" layoutX="851.0" layoutY="393.0" prefHeight="45.0" prefWidth="263.0">
          <font>
             <Font size="24.0" />
          </font></TextField>
-      <TextField fx:id="attackDamage" layoutX="851.0" layoutY="512.0" prefHeight="45.0" prefWidth="263.0">
+      <TextField fx:id="attackDamage" layoutX="851.0" layoutY="474.0" prefHeight="45.0" prefWidth="263.0">
          <font>
             <Font size="24.0" />
          </font></TextField>
-      <TextField fx:id="currentLocation" layoutX="851.0" layoutY="596.0" prefHeight="45.0" prefWidth="263.0">
+      <TextField fx:id="currentLocation" layoutX="851.0" layoutY="558.0" prefHeight="45.0" prefWidth="263.0">
          <font>
             <Font size="24.0" />
          </font></TextField>
@@ -55,5 +55,15 @@
          <font>
             <Font size="24.0" />
          </font></Button>
+      <Label layoutX="522.0" layoutY="638.0" prefHeight="44.0" prefWidth="308.0" text="Equipped Weapon:">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <TextField fx:id="currentEquippmedWeapon" layoutX="854.0" layoutY="637.0" prefHeight="45.0" prefWidth="263.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </TextField>
    </children>
 </AnchorPane>
