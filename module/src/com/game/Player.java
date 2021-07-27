@@ -11,13 +11,24 @@ public class Player{
     private static String name = "Jemad";
     private Map map = new Map();
     private Items items = new Items();
+    // another test July 21, 2021
+    private static ArrayList<Item> inventory = new ArrayList<>();
     // my test
     private static int hp = 100;
     private static String currentLocation = "Outside Bar";
     private static int minDamage = 7;
     private static int maxDamage = 12;
+    private final int DEFAULT_MIN_DAMAGE = 7;
+    private final int DEFAULT_MAX_DAMAGE = 12;
+
+    private static String equippedWeapon;
     // just an empty constructor
     public Player() {}
+
+    //Clear Inventory
+    public void resetInventory(){
+        inventory.clear();
+    }
 
     public int getFullHp() {
         return 100;
@@ -97,6 +108,66 @@ public class Player{
         if(item == null || item == "") return;
         playerItems.add(item);
     }
+
+    // my test
+    public boolean addItemJson(Item item) {
+        // inventory = new ArrayList<>();
+        if (inventory.contains(item)) {
+            return false;
+        }
+        inventory.add(item);
+        return true;
+    }
+
+    public String useItemJson(Item item) {
+        if (inventory.contains(item)) {
+            Item selectedItem = item;
+            String type = selectedItem.getItemType();
+            switch (type) {
+                case "Consumable":
+                    int healHPAmount = selectedItem.getItemAffect();
+                    if (this.getHp() >= 100) {
+                        return "Your hp is full already";
+                    }
+                    // if it add up and then it is greater than 100 then
+                    else if (this.getHp() + healHPAmount >= 100) {
+                        this.setHp(100);
+                        // remove item
+                        inventory.remove(selectedItem);
+                        return "Restore your hp";
+                    } else if (this.getHp() + healHPAmount < 100) {
+                        this.setHp(this.getHp() + healHPAmount);
+                        // remove item
+                        inventory.remove(selectedItem);
+                        return "Restore your hp";
+                    } else {
+                        System.out.println("Consume: I do not know what happened in use item: return false");
+                        return "Consume: I do not know what happened in use item: return false";
+                    }
+                case "Weapon":
+                    int increaseDamageAmount = selectedItem.getItemAffect();
+                    setEquippedWeapon(selectedItem.getItemName());
+                    this.setMinDamage( DEFAULT_MIN_DAMAGE + increaseDamageAmount );
+                    this.setMaxDamage( DEFAULT_MAX_DAMAGE + increaseDamageAmount );
+                    inventory.remove(selectedItem);
+                    return "Your damage increased by " + increaseDamageAmount;
+            }
+        }
+        return "";
+    }
+
+    public String getEquippedWeapon() {
+        return equippedWeapon;
+    }
+
+    public void setEquippedWeapon(String weaponName) {
+        equippedWeapon = weaponName;
+    }
+
+    public ArrayList<Item> getInventory() {
+        return inventory;
+    }
+    // end of my test
 
     public void removeItem(String item){
         if(item == null || item == "") return;

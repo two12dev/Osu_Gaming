@@ -10,6 +10,18 @@ public class JemadCombat extends SotfCharacters{
     private Player jemad = new Player();
     Random random = new Random();
     //Hashmap for Jemad attack and damage
+
+    // set up a default constructor
+    public JemadCombat() {
+        // empty
+    }
+
+    // method overloading
+    public int jemadMoves() {
+        int randomDamage = randomDamage(jemad.getMinDamage(),jemad.getMaxDamage());
+        return randomDamage;
+    }
+
     public int jemadMoves (String moves) {
 
         int randomDamage = randomDamage(jemad.getMinDamage(),jemad.getMaxDamage());

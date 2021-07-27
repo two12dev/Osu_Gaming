@@ -2,7 +2,7 @@
   "bouncer": {
     "Max Health": 30,
     "Min Attack": 5,
-    "Max Attack": 10
+    "Max Attack": 7
   },
   "security guard": {
     "Max Health": 35,
@@ -10,44 +10,44 @@
     "Max Attack": 12
   },
   "pool shark": {
-    "Max Health": 25,
-    "Min Attack": 1,
-    "Max Attack": 5
+    "Max Health": 35,
+    "Min Attack": 9,
+    "Max Attack": 15
   },
   "biker": {
     "Max Health": 25,
-    "Min Attack": 1,
-    "Max Attack": 5
+    "Min Attack": 8,
+    "Max Attack": 14
   },
   "pool boy": {
-    "Max Health": 25,
-    "Min Attack": 1,
-    "Max Attack": 5
+    "Max Health": 30,
+    "Min Attack": 6,
+    "Max Attack": 10
   },
   "locker guard": {
-    "Max Health": 25,
-    "Min Attack": 1,
-    "Max Attack": 5
+    "Max Health": 30,
+    "Min Attack": 7,
+    "Max Attack": 12
   },
   "dishwasher": {
-    "Max Health": 25,
-    "Min Attack": 1,
-    "Max Attack": 5
+    "Max Health": 35,
+    "Min Attack": 11,
+    "Max Attack": 14
   },
   "slots guard": {
-    "Max Health": 25,
-    "Min Attack": 1,
-    "Max Attack": 5
+    "Max Health": 38,
+    "Min Attack": 12,
+    "Max Attack": 15
   },
   "pit guard": {
-    "Max Health": 25,
-    "Min Attack": 1,
-    "Max Attack": 5
+    "Max Health": 42,
+    "Min Attack": 15,
+    "Max Attack": 22
   },
   "chef": {
-    "Max Health": 25,
-    "Min Attack": 1,
-    "Max Attack": 5
+    "Max Health": 45,
+    "Min Attack": 12,
+    "Max Attack": 23
   },
   "elevator man": {
     "Max Health": 25,
@@ -61,13 +61,13 @@
   },
   "ninja": {
     "Max Health": 50,
-    "Min Attack": 1,
-    "Max Attack": 5
+    "Min Attack": 22,
+    "Max Attack": 27
   },
   "bartender": {
-    "Max Health": 50,
-    "Min Attack": 1,
-    "Max Attack": 5
+    "Max Health": 40,
+    "Min Attack": 12,
+    "Max Attack": 15
   },
   "life guard": {
     "Max Health": 50,
@@ -75,9 +75,9 @@
     "Max Attack": 5
   },
   "big ben": {
-    "Max Health": 50,
+    "Max Health": 60,
     "Min Attack": 1,
-    "Max Attack": 5
+    "Max Attack": 15
   },
   "pit boss": {
     "Max Health": 50,
@@ -85,8 +85,8 @@
     "Max Attack": 5
   },
   "Don Fury": {
-    "Max Health": 75,
-    "Min Attack": 1,
-    "Max Attack": 5
+    "Max Health": 100,
+    "Min Attack": 20,
+    "Max Attack": 26
   }
 }

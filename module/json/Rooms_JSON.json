@@ -31,7 +31,7 @@
   "Alley Behind Bar":{
     "NPC":["beggar"],
     "items": ["boots"],
-    "enemies": [""],
+    "enemies": [],
     "bosses": ["bartender"],
     "name": ["Alley Behind Bar"],
     "east": ["Locker Room"],
@@ -74,8 +74,8 @@
   "Pool Deck: Upper Level":{
     "NPC":["bartender"],
     "items": ["empty bottle"],
-    "enemies": [""],
-    "bosses": ["big ben"],
+    "enemies": ["big ben"],
+    "bosses": [],
     "name": ["Pool Deck: Upper Level"],
     "south": ["Slot Machines"],
     "west": ["Pool Bar"],
@@ -116,8 +116,8 @@
   "VIP Room":{
     "NPC":[""],
     "items": ["cash"],
-    "enemies": [""],
-    "bosses": ["pit boss"],
+    "enemies": ["pit boss"],
+    "bosses": [],
     "name": ["VIP Room"],
     "east": ["Elevator"],
     "north": ["Poker Tables"],
@@ -126,7 +126,7 @@
   },
   "Elevator":{
     "NPC":["attendant"],
-    "items": [""],
+    "items": [],
     "enemies": ["elevator man"],
     "bosses": [""],
     "name": ["Elevator"],
@@ -156,9 +156,9 @@
   },
   "Rooftop: Final Boss":{
     "NPC":[""],
-    "items": [""],
-    "enemies": [""],
-    "bosses": ["Don Fury"],
+    "items": [],
+    "enemies": ["Don Fury"],
+    "bosses": [""],
     "name": ["Rooftop: Final Boss"],
     "west": ["Balcony"],
     "Description": ["'At Last' Jemad thought to himself as he finally made it to the Roof top suite balcony.  Inside he could see a office with a large solid wood desk and 2 figures standing near it.  One figure was tall and solid, the other about waist high to Jemad.  'Must be the kid but who are they with?' Jemad walks inside to finally bring this madness to a close", "room change 1", "room change 2"]

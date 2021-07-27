@@ -1,0 +1,133 @@
+{
+  "Outside Bar":{
+    "item": [
+      {
+        "name": "snack",
+        "type": "Consumable",
+        "effect": 10
+      },
+      {
+        "name": "wood stick",
+        "type": "Weapon",
+        "effect": 12
+      }
+    ]
+  },
+  "Inside Bar":{
+    "item": [
+      {
+        "name": "energy drink",
+        "type": "Consumable",
+        "effect": 14
+      },
+      {
+        "name": "protein shake",
+        "type": "Consumable",
+        "effect": 10
+      }
+    ]
+  },
+  "Pool Room":{
+    "item": [
+      {
+        "name": "pool cue",
+        "type": "Weapon",
+        "effect": 8
+      }
+    ]
+  },
+  "Alley Behind Bar":{
+    "item": [
+      {
+        "name": "used bandage",
+        "type": "Consumable",
+        "effect": 17
+      }]
+  },
+  "Locker Room":{
+    "item": [
+      {
+        "name": "baseball bat",
+        "type": "Weapon",
+        "effect": 13
+      }]
+  },
+  "Pool Deck":{
+    "item": [
+      {
+        "name": "cold tea",
+        "type": "Consumable",
+        "effect": 8
+      }]
+  },
+  "Pool Bar":{
+    "item": [
+      {
+        "name": "smart water",
+        "type": "Consumable",
+        "effect": 20
+      }]
+  },
+  "Pool Deck: Upper Level":{
+    "item": []
+  },
+  "Slot Machines":{
+    "item": [
+      {
+        "name": "soda",
+        "type": "Consumable",
+        "effect": 15
+      }]
+  },
+  "Poker Tables":{
+    "item": [
+      {
+        "name": "wooden knuckle",
+        "type": "Weapon",
+        "effect": 15
+      }]
+  },
+  "Steak House":{
+    "item": [
+      {
+        "name": "chef's knife",
+        "type": "Weapon",
+        "effect": 16
+      }]
+  },
+  "VIP Room":{
+    "item": [
+      {
+        "name": "organic vegetable drink",
+        "type": "Consumable",
+        "effect": 21
+      }]
+  },
+  "Elevator":{
+    "item": [
+      {
+        "name": "iron fist",
+        "type": "Weapon",
+        "effect": 17
+      }]
+  },
+
+  "Hotel Halls":{
+    "item": [
+      {
+        "name": "spirit of fist",
+        "type": "Weapon",
+        "effect": 19
+      }]
+  },
+  "Balcony":{
+    "item": [
+      {
+        "name": "cold water",
+        "type": "Consumable",
+        "effect": 45
+      }]
+  },
+  "Rooftop: Final Boss":{
+  }
+}
