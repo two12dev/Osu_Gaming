@@ -33,6 +33,7 @@ public class SaveGameSceneController {
         String currentLocation = jemad.getCurrentLocation();
         int minDamage = jemad.getMinDamage();
         int maxDamage = jemad.getMaxDamage();
+        String equippedWeapon = jemad.getEquippedWeapon();
         ArrayList<Item> jemadInventory = jemad.getInventory();
 
         //Will create new savedGame file if it does not exists.
@@ -56,6 +57,8 @@ public class SaveGameSceneController {
             savedGame.write("" + minDamage);
             savedGame.newLine();;
             savedGame.write("" + maxDamage);
+            savedGame.newLine();
+            savedGame.write("" + equippedWeapon);
             savedGame.newLine();
 
             for (Item items: jemadInventory){

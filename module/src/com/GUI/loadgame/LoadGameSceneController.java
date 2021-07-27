@@ -44,6 +44,7 @@ public class LoadGameSceneController {
                 String currentLocation = saveFile.readLine();
                 int minDamage = Integer.parseInt(saveFile.readLine());
                 int maxDamage = Integer.parseInt(saveFile.readLine());
+                String equippedWeapon = saveFile.readLine();
                 int itemCount = 0;
                 ArrayList<String> listOfItems = new ArrayList<String>();
                 String nextLine = saveFile.readLine();
@@ -58,6 +59,8 @@ public class LoadGameSceneController {
                 attributes.add(currentLocation);
                 attributes.add(minDamage);
                 attributes.add(maxDamage);
+
+
                 if (listOfItems.size() > 0){
                     for (String item: listOfItems){
                         attributes.add(item);
@@ -75,12 +78,17 @@ public class LoadGameSceneController {
             //Reading Attributes from save file
             ArrayList<Object> savedGameArray = LoadGame.loadAttributesFromSaveGameFile();
             int savedGameArraySize = savedGameArray.size();
-            int numOfItems = savedGameArraySize - 4;
+            int numOfItems = savedGameArraySize - 5;
             jemad.setHp((Integer) savedGameArray.get(0));
             String startingLocation = (String) savedGameArray.get(1);
             jemad.setMinDamage((Integer) savedGameArray.get(2));
             jemad.setMaxDamage((Integer) savedGameArray.get(3));
-            int itemIndex = 4;
+
+            if(savedGameArray.size() > 4){
+                jemad.setEquippedWeapon((String) savedGameArray.get(4));
+            }
+
+            int itemIndex = 5;
             while (numOfItems > 0){
                 String itemString = (String) savedGameArray.get(itemIndex);
                 JSONObject jsonItemObject = ReadItemContentJson.getItemBasedOnItemName(itemString);
@@ -99,8 +107,8 @@ public class LoadGameSceneController {
             jemad.setCurrentLocation("Outside Bar");
             jemad.setMinDamage(7);
             jemad.setMaxDamage(12);
-            jemad.resetInventory();
             jemad.setEquippedWeapon(null);
+            jemad.resetInventory();
             MainScreenController.clearItemsAndEnemies();
         }
 
@@ -125,8 +133,8 @@ public class LoadGameSceneController {
         jemad.setCurrentLocation("Outside Bar");
         jemad.setMinDamage(7);
         jemad.setMaxDamage(12);
-        jemad.resetInventory();
         jemad.setEquippedWeapon(null);
+        jemad.resetInventory();
         MainScreenController.clearItemsAndEnemies();
         SceneController.switchScenesBaseOnBtnClick(event);
     }
