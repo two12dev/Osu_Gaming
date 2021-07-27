@@ -29,6 +29,9 @@ public class PlayerStatusSceneController {
     @FXML
     private Button exitPlayerStatusButton;
 
+    @FXML
+    private TextField currentEquippmedWeapon;
+
     private Image fbiImage;
     // player class
     private Player player = new Player();
@@ -63,6 +66,9 @@ public class PlayerStatusSceneController {
         // current location
         currentLocation.setText(player.getCurrentLocation());
         currentLocation.setEditable(false);
+        // current equipped weapon
+        currentEquippmedWeapon.setText(player.getEquippedWeapon());
+        currentEquippmedWeapon.setEditable(false);
     }
 
     public void switchItIntoMain(ActionEvent event) throws IOException {
