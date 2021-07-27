@@ -1,5 +1,6 @@
 package com.GUI.maingame;
 
+import com.GUI.Controller;
 import com.GUI.SceneController;
 import com.GUI.lose.LoseSceneBuilder;
 import com.GUI.win.WinSceneBuilder;
@@ -10,6 +11,7 @@ import com.game.Player;
 import com.readjson.ReadItemContentJson;
 import com.readjson.ReadMoveContentJson;
 import com.readjson.ReadRoomContentJson;
+import com.readjson.ReadWeaponMovementContent;
 import com.story.StoryGenerator;
 import javafx.animation.FadeTransition;
 import javafx.beans.value.ChangeListener;
@@ -93,13 +95,6 @@ public class MainScreenController {
     @FXML
     private TextArea fightCombatDialog;
     @FXML private Slider volumeSlider;
-    private File directory;
-    private File[] files;
-    private ArrayList<File> songs;
-    private int songNumber;
-    private boolean running;
-    private Media media;
-    private MediaPlayer mediaPlayer;
 
     // player obj to retrieve the current location
     private Player jemad = new Player();
@@ -107,8 +102,32 @@ public class MainScreenController {
     private static HashMap<String, Enemy> DEFEATED_ENEMYLIST = new HashMap<>();
     private static ArrayList<String> OBTAINED_ITEMS = new ArrayList<>();
 
+    // static variable for keep track which map had been visited
+    private static HashMap<String, Boolean> IS_NOT_VISITED = new HashMap<>(){{
+        put("Inside Bar", true);
+        put("Pool Room", true);
+        put("Alley Behind Bar", true);
+        put("Locker Room", true);
+        put("Pool Deck", true);
+        put("Pool Bar", true);
+        put("Pool Deck: Upper Level", true);
+        put("Slot Machines", true);
+        put("Poker Tables", true);
+        put("Steak House", true);
+        put("VIP Room", true);
+        put("Elevator", true);
+        put("Hotel Halls", true);
+        put("Balcony", true);
+        put("Rooftop: Final Boss", true);
+    }};
+
+    @FXML
+    private MenuButton weaponMovementButton;
+    private static Enemy enemyAtTheScene;
+
     @FXML
     public void initialize() {
+
         generateDescriptionBasedOnLocation();
         generatePossibleItemsInCurrentRoom();
         // get possible enemy located in player's current room
@@ -149,70 +168,44 @@ public class MainScreenController {
             }
         });
         currentLocationLabel.setText(jemad.getCurrentLocation());
+    }
 
-        songs = new ArrayList<File>();
-        directory = new File("module/json/Music");
-        files = directory.listFiles();
-        if (files != null) {
-            for (File file : files) {
-                songs.add(file);
-                System.out.println(file);
-            }
-        }
-        media = new Media(songs.get(songNumber).toURI().toString());
-        System.out.println(media);
-        mediaPlayer = new MediaPlayer(media);
-        playMedia();
+    public static boolean getPlayerVisitedPlaces(String location) {
+        System.out.println("Static method getPlayervisitedPlaces " + IS_NOT_VISITED.get(location));
+        return IS_NOT_VISITED.get(location);
+    }
 
-
+    public void volume() {
         volumeSlider.valueProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
-                mediaPlayer.setVolume(volumeSlider.getValue() *.01);
+                Controller.getInstance().getMediaPlayer().setVolume(volumeSlider.getValue() *.01);
+                //Controller.getMediaPlayer().setVolume(volumeSlider.getValue() *.01);
+                System.out.println("adjusting volume");
             }
-
         });
-
     }
 
+    @FXML
     public void playMedia(){
-        mediaPlayer.play();
-        System.out.println("Playing music");
-        mediaPlayer.setOnEndOfMedia(new Runnable() {
-            @Override
-            public void run() {
-                System.out.println("Works");
-                nextMedia();
-                ;            }
-        });
+        Controller.getInstance().playMedia();
     }
+    @FXML
     public void pauseMedia(){
-        mediaPlayer.pause();
+        Controller.getInstance().pauseMedia();
     }
+    @FXML
     public void nextMedia() {
-        if (songNumber < 1) {
-            songNumber++;
-            mediaPlayer.stop();
-            System.out.println("Stopped");
-            media = new Media(songs.get(songNumber).toURI().toString());
-            mediaPlayer = new MediaPlayer(media);
-            playMedia();
-        } else {
-            songNumber = 0;
-            mediaPlayer.stop();
-            System.out.println("Music stop");
-            media = new Media(songs.get(songNumber).toURI().toString());
-            mediaPlayer = new MediaPlayer(media);
-            playMedia();
-        }
+        Controller.getInstance().nextMedia();
     }
-
-
 
     // fight menu items
     public void generatePossibleEnemyInCurrentRoom() {
         JSONArray enemyList = ReadRoomContentJson.retrieveEnemiesOnCurrentRoom(jemad.getCurrentLocation());
         if (enemyList == null || enemyList.size() == 0) {
+            MenuItem emptyItem = new MenuItem();
+            emptyItem.setText("No enemy exist");
+            fightButton.getItems().add(emptyItem);
             return;
         }
         if (DEFEATED_ENEMYLIST != null && DEFEATED_ENEMYLIST.size() > 0) {
@@ -251,6 +244,8 @@ public class MainScreenController {
         jemadFacingRightImageView.setVisible(false);
         enemyFacingImageView.setVisible(false);
         enemyFightTextArea.setVisible(false);
+
+        weaponMovementButton.setVisible(false);
     }
 
     // display all hidencombat info
@@ -260,6 +255,10 @@ public class MainScreenController {
         jemadFacingRightImageView.setVisible(true);
         enemyFacingImageView.setVisible(true);
         enemyFightTextArea.setVisible(true);
+        // if the user is currently equipped weapon
+        if (jemad.getEquippedWeapon() != null && jemad.getEquippedWeapon().length() > 0) {
+            weaponMovementButton.setVisible(true);
+        }
     }
 
     // display win after combat
@@ -326,14 +325,26 @@ public class MainScreenController {
         duringFightDisableButtons();
         // display jemad and enemy fight info
         showAllCombatInfo();
-        Enemy selectedEnemy = new Enemy(fxId);
+        // ==============================================
+        // IMPORTANT CHANGE MUST GET TESTED
+        // Enemy selectedEnemy = new Enemy(fxId);
+        enemyAtTheScene = new Enemy(fxId);
+        // eend of important TEST
+
+        // final boss background music
+        // null check
+        if (enemyAtTheScene.getName() != null) {
+            if (enemyAtTheScene.getName().equals("Don Fury")) {
+                Controller.getInstance().playFinalBossMusic();
+            }
+        }
 
         // must disable all buttons (such as menu, getItem)
         fightCombatDialog(fxId);
         // set up enemy
-        getEnemyInfo(selectedEnemy);
+        getEnemyInfo(enemyAtTheScene);
         // set up player
-        getPlayerJemadInfo(selectedEnemy);
+        getPlayerJemadInfo(enemyAtTheScene);
     }
 
     // set the dialog
@@ -367,6 +378,12 @@ public class MainScreenController {
 
     // private method to retrieve current Jemad's info for fight
     private void getPlayerJemadInfo(Enemy selectedEnemy) {
+        if (selectedEnemy.getName().equals("Don Fury")) {
+            Controller.getInstance().pauseMedia();
+            System.out.println("Don Fury final boss stage");
+            Controller.getInstance().playFinalBossMusic();
+        }
+
         getPlayerJemadInfoHelper();
         // set up the jemad facing image
         jemadFightImage = new Image(this.getClass().getResourceAsStream("/images/jemadFightImage.jpeg"));
@@ -387,6 +404,39 @@ public class MainScreenController {
             // loop until someone die
             jemadCombatMovementMenuButton.getItems().add(eachAttack);
         }
+        // update the weapon movement
+        updateWeaponMovement(selectedEnemy);
+    }
+
+    // jemad info for weapon movement if jemad equipped a weapon
+    private void updateWeaponMovement(Enemy selectedEnemy) {
+        if (jemad.getEquippedWeapon() != null && jemad.getEquippedWeapon().length() > 0) {
+            // if Jemad equipped the weapon
+            weaponMovementButton.getItems().clear();
+
+            JSONArray weaponMovements = ReadWeaponMovementContent.getSpecificWeaponMovementJSON(jemad.getEquippedWeapon());
+            if (weaponMovements == null || weaponMovements.isEmpty()) {
+                // null check
+                System.out.println("Hey designer, check the json file for weapon movement and room json for item");
+                return;
+            }
+            // clear out the weapon menu item
+            // weaponMovementButton.getItems().clear();
+            for (Object eachWeaponMoves: weaponMovements) {
+                MenuItem eachWeaponMoveMenu = new MenuItem();
+                eachWeaponMoveMenu.setId(String.valueOf(eachWeaponMoves).toLowerCase());
+                eachWeaponMoveMenu.setText(String.valueOf(eachWeaponMoves).toLowerCase());
+                // set an action about fighting logic for each menu item
+                eachWeaponMoveMenu.setOnAction(e -> fightingCombatLogic(e, String.valueOf(eachWeaponMoves).toLowerCase(), selectedEnemy));
+                // added it into the menuButton
+                weaponMovementButton.getItems().add(eachWeaponMoveMenu);
+            }
+            if (incombatMessage.getText().equals("In Combat")) {
+                weaponMovementButton.setVisible(true);
+            }
+        } else {
+            System.out.println("FROM UPDATE WEAPON MOVEMENT: it is null? " + jemad.getEquippedWeapon());
+        }
     }
 
     // private method just to retrieve current player info for textarea
@@ -399,6 +449,7 @@ public class MainScreenController {
         playerFightTextArea.setStyle("-fx-font-size: 4em;");
         playerFightTextArea.setStyle("-fx-focus-color: transparent; -fx-text-box-border: transparent;");
         playerFightTextArea.setText(playerName + "\n\nHp: " + playerHp + "\n\nDamage: " + playerMinDamage + " ~ " + playerMaxDamage);
+        updateWeaponMovement(enemyAtTheScene);
     }
 
     // private method to move into lose scene
@@ -440,14 +491,23 @@ public class MainScreenController {
     }
 
     private void fightingCombatLogic(ActionEvent e, String jemadAttackMove, Enemy currentEnemy) {
+        if (currentEnemy != null) {
+            if (!currentEnemy.getName().equals("Don Fury")) {
+                Controller.getInstance().getMediaPlayer().pause();
+            }
+        }
         Media punch;
         MediaPlayer punchPlayer;
-        punch = new Media(new File("module/json/punch.wav").toURI().toString());
-        System.out.println(punch);
-        punchPlayer = new MediaPlayer(punch);
-        punchPlayer.play();
-
+        // test
         boolean isDefeated = false;
+        if (currentEnemy.getHp() > 0) {
+            punch  = new Media(Controller.class.getResource("/punch.wav").toString());
+            // end of test
+            // punch = new Media(new File("module/json/punch.wav").toURI().toString());
+            System.out.println(punch);
+            punchPlayer = new MediaPlayer(punch);
+            punchPlayer.play();
+        }
         JemadCombat jemadCombatMove = new JemadCombat();
         int jemadHp = jemad.getHp();
         int enemyHp = currentEnemy.getHp();
@@ -465,7 +525,7 @@ public class MainScreenController {
         // player attack first
         if (firstMove == 0) {
             // jemad goes first
-            actualDamage = jemadCombatMove.jemadMoves(jemadAttackMove);
+            actualDamage = jemadCombatMove.jemadMoves();
             enemyHp -= actualDamage;
             currentEnemy.setHp(enemyHp);
             // reset enemy hp area
@@ -477,6 +537,7 @@ public class MainScreenController {
                     currentEnemy.setHp(0);
                     // move to ending scene
                     moveToVictoryScene();
+                    // boss stage music must be tested!!!!
                     return;
                 }
 
@@ -497,6 +558,8 @@ public class MainScreenController {
                 generatePossibleEnemyInCurrentRoom();
                 // display you won
                 showWinStatement();
+                generatePossibleItemsInCurrentRoom();
+                Controller.getInstance().getMediaPlayer().play();
                 return;
             }
             actualEnemyDamage = Integer.parseInt(enemyAttack.get(1));
@@ -537,15 +600,15 @@ public class MainScreenController {
                 moveToLoseScene();
                 return;
             }
-            actualDamage = jemadCombatMove.jemadMoves(jemadAttackMove);
+            actualDamage = jemadCombatMove.jemadMoves();
             currentEnemy.setHp(currentEnemy.getHp() - actualDamage);
             getEnemyInfoHelper(currentEnemy);
             if (currentEnemy.getHp() <= 0) {
                 if (currentEnemy.getName().equals("Don Fury")) {
                     System.out.println("Final boss fight!!");
                     // move to ending scene
-                     moveToVictoryScene();
-                     return;
+                    moveToVictoryScene();
+                    return;
                 }
                 // player won
                 // need to print out the combat outro from JSON
@@ -563,6 +626,9 @@ public class MainScreenController {
                 generatePossibleEnemyInCurrentRoom();
                 // display you won
                 showWinStatement();
+                // test
+                generatePossibleItemsInCurrentRoom();
+                Controller.getInstance().getMediaPlayer().play();
                 return;
             }
         }
@@ -587,7 +653,29 @@ public class MainScreenController {
         String movedLocation = String.valueOf(nextRoomBasedOnButton.get(0));
         // set Jemad's location to movedLocation
         jemad.setCurrentLocation(movedLocation);
+        IS_NOT_VISITED.put(movedLocation, false);
+        System.out.println("MOVEMENT hoho: " + IS_NOT_VISITED);
         SceneController.switchScenesBaseOnBtnClick(e);
+    }
+
+    // add restriction for obtaining item
+    private boolean restrictGeneratePossibleItemInCurrentRoom() {
+        JSONArray enemyList = ReadRoomContentJson.retrieveEnemiesOnCurrentRoom(jemad.getCurrentLocation());
+        if (enemyList == null || enemyList.size() == 0) {
+            return true;
+        }
+        if (DEFEATED_ENEMYLIST != null && DEFEATED_ENEMYLIST.size() > 0) {
+            // if enemy got defeated in current user's location
+            if (DEFEATED_ENEMYLIST.containsKey(jemad.getCurrentLocation())) {
+                String defeatedEnemy = DEFEATED_ENEMYLIST.get(jemad.getCurrentLocation()).getName();
+                if (enemyList.contains(defeatedEnemy)) {
+                    enemyList.remove(defeatedEnemy);
+
+                }
+            }
+        }
+        // return true if all enemies had been defeated
+        return enemyList.isEmpty();
     }
 
     // private method to generate all possible item based on
@@ -598,7 +686,7 @@ public class MainScreenController {
         if (itemList == null || itemList.size() == 0) {
             return;
         }
-        if (itemList != null && itemList.size() > 0) {
+        if (itemList != null && itemList.size() > 0 && restrictGeneratePossibleItemInCurrentRoom()) {
             // clear out the previous item inventory
             getItemMenuButton.getItems().clear();
             for (Object eachItem: itemList) {
@@ -618,7 +706,7 @@ public class MainScreenController {
             }
         } else {
             MenuItem emptyItem = new MenuItem();
-            emptyItem.setText("No items exist");
+            emptyItem.setText("Fight the enemy to reveal");
             getItemMenuButton.getItems().add(emptyItem);
         }
     }
@@ -676,6 +764,7 @@ public class MainScreenController {
         }
         // update textarea
         getPlayerJemadInfoHelper();
+
     }
 
     private void generateDescriptionBasedOnLocation() {
@@ -694,6 +783,6 @@ public class MainScreenController {
             SceneController.switchSceneBaseOnMenuItemClick(event, stage);
         } else {
             SceneController.switchScenesBaseOnBtnClick(event);
-         }
+        }
     }
 }

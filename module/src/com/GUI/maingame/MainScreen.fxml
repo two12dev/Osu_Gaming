@@ -10,6 +10,7 @@
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
@@ -26,7 +27,6 @@
               <items>
                 <MenuItem fx:id="displayMapMenuItem" mnemonicParsing="false" onAction="#switchItIntoMap" text="Map" />
                 <MenuItem fx:id="aboutJemad" mnemonicParsing="false" onAction="#switchItIntoMap" text="About Jemad" />
-                <MenuItem mnemonicParsing="false" text="Inventory" />
                 <MenuItem fx:id="saveGame" mnemonicParsing="false" onAction="#switchItIntoMap" text="Save Game" />
                 <MenuItem fx:id="loadGame" mnemonicParsing="false" onAction="#switchItIntoMap" text="Load Game" />
               </items>
@@ -160,24 +160,24 @@
          <children>
             <TextArea fx:id="playerFightTextArea" editable="false" layoutX="111.0" layoutY="14.0" prefHeight="102.0" prefWidth="200.0" wrapText="true" />
             <ImageView fx:id="jemadFacingRightImageView" fitHeight="171.0" fitWidth="138.0" layoutX="173.0" layoutY="143.0" pickOnBounds="true" preserveRatio="true" />
-            <MenuButton fx:id="jemadCombatMovementMenuButton" layoutX="31.0" layoutY="154.0" mnemonicParsing="false" text="Movements" />
+            <MenuButton fx:id="jemadCombatMovementMenuButton" layoutX="30.0" layoutY="143.0" mnemonicParsing="false" text="Movements" />
             <TextArea fx:id="enemyFightTextArea" editable="false" layoutX="513.0" layoutY="196.0" prefHeight="121.0" prefWidth="200.0" />
-            <ImageView fx:id="enemyFacingImageView" fitHeight="150.0" fitWidth="131.0" layoutX="513.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="enemyFacingImageView" fitHeight="177.0" fitWidth="174.0" layoutX="513.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" />
             <Label layoutX="754.0" layoutY="15.0" prefHeight="25.0" prefWidth="102.0" text="Combat Dialog">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
             <TextArea fx:id="fightCombatDialog" editable="false" layoutX="754.0" layoutY="44.0" prefHeight="270.0" prefWidth="410.0" wrapText="true" />
+            <MenuButton fx:id="weaponMovementButton" layoutX="9.0" layoutY="196.0" mnemonicParsing="false" text="Weapon Movement" />
          </children>
       </Pane>
       <MenuBar layoutX="16.0" layoutY="14.0" style="-fx-background-color: white;">
         <menus>
           <Menu mnemonicParsing="false">
                <graphic>
-                  <Slider fx:id="volumeSlider" blockIncrement="1.0" majorTickUnit="5.0" min="1.0" minorTickCount="1" prefHeight="14.0" prefWidth="62.0" style="-fx-background-color: white;" value="20.0" />
-               </graphic>
-          </Menu>
+                  <Slider fx:id="volumeSlider" blockIncrement="1.0" onDragDetected="#volume" prefHeight="15.0" prefWidth="68.0" value="25.0" />
+               </graphic></Menu>
           <Menu mnemonicParsing="false" text="Music">
             <items>
               <MenuItem mnemonicParsing="false" onAction="#playMedia" text="Play" />
@@ -187,5 +187,6 @@
           </Menu>
         </menus>
       </MenuBar>
+      <ToggleButton layoutX="186.0" layoutY="-43.0" mnemonicParsing="false" text="ToggleButton" />
    </children>
 </AnchorPane>
