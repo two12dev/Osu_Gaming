@@ -19,6 +19,7 @@ public class SOTF extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("TitleScreen.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
+        stage.setResizable(false);
         stage.setTitle("Spirit Of The Fist");
         stage.show();
 
