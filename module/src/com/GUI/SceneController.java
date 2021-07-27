@@ -96,7 +96,6 @@ public class SceneController {
                 stage.close();
                 break;
             case "loadBtn":
-            case "loadGameTitleBtn":
                 LoadGameScene loadGameScene = new LoadGameScene();
                 loadGameScene.buildLoadGameWaitScene(stage);
                 break;
@@ -104,9 +103,14 @@ public class SceneController {
                 TutorialSceneBuilder tutorialScene = new TutorialSceneBuilder();
                 tutorialScene.buildWinScene(stage);
                 break;
-            case "restartButton":
+            case "loadGameTitleBtn":
                 loadGameScene = new LoadGameScene();
                 loadGameScene.buildLoadGameRestartScene(stage);
+                break;
+            case "restartLoseButton":
+                loadGameScene = new LoadGameScene();
+                loadGameScene.buildLoseResetLoadGameScene(stage);
+
         }
     }
 }

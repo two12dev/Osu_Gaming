@@ -2,6 +2,7 @@ package com.GUI.lose;
 
 import com.GUI.Controller;
 import com.GUI.SceneController;
+import com.GUI.loadgame.LoadGameSceneController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -21,13 +22,13 @@ public class LoseSceneController {
     private ImageView defeatedImageView;
     private Image defeatImage;
     @FXML
-    private Button restartButton;
+    private Button restartLoseButton;
     @FXML
     private Button exitButton;
 
 
     public void initialize() {
-        restartButton.setOnAction(e -> {
+        restartLoseButton.setOnAction(e -> {
             try {
                 restartTheApplication(e);
             } catch (IOException ioException) {
